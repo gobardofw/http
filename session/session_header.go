@@ -53,7 +53,7 @@ func (s *headerSession) Parse() {
 	} else {
 		s.id = sessionID
 		var res map[string]interface{}
-		if data, ok := s.cache.Bytes(s.identifier(""), nil); ok {
+		if data := s.cache.Bytes(s.identifier(""), nil); data != nil {
 			if err := json.Unmarshal(data, &res); err == nil && res != nil {
 				s.data = res
 			}
