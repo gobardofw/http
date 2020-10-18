@@ -9,7 +9,7 @@ import (
 )
 
 // NewHeaderSession create new header based session
-func NewHeaderSession(cache cache.Cache, ctx *fiber.Ctx, exp time.Duration) fiber.Handler {
+func NewHeaderSession(cache cache.Cache, exp time.Duration) fiber.Handler {
 	return func(ctx *fiber.Ctx) error {
 		s := session.NewHeaderSession(cache, ctx, exp, session.UUIDGenerator, "X-SESSION-ID")
 		defer s.Save()
